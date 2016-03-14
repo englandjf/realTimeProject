@@ -9,6 +9,12 @@ public class globalVars : MonoBehaviour {
 
 	public GameObject menuState;
 
+	public createScript cs;
+
+	public objectBank ob;
+
+	public GameObject selectedCube;
+
 	// Use this for initialization
 	void Start () {
 		camDis = 10;
@@ -16,7 +22,14 @@ public class globalVars : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(selectedCube && Input.GetMouseButtonDown(1))
+		{
+			Ray a = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+			selectedCube.GetComponent<cubeControl>().moveTo(a.GetPoint(camDis));
+		}
+
+		//handle game logic here?
 	}
 
 	public void clearTileState()

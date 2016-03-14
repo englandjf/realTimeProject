@@ -25,7 +25,7 @@ public class cameraScript : MonoBehaviour {
 			newPos.z+=.2f;
 		this.transform.position = newPos;
 
-		Debug.Log (Input.mouseScrollDelta);
+//		Debug.Log (Input.mouseScrollDelta);
 
 	}
 

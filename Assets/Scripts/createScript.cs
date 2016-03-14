@@ -19,8 +19,8 @@ public class createScript : MonoBehaviour {
 
 	void createTiles()
 	{
-		for (int x = 0; x <= 100; x++) {
-			for (int z = 0; z <= 100; z++) {
+		for (int x = 0; x <= 50; x++) {
+			for (int z = 0; z <= 50; z++) {
 				int aRand = Random.Range (0, 10);
 				if (aRand == 0) {
 					GameObject a = (GameObject)Instantiate (metalTile, new Vector3 (x, 0, z), Quaternion.Euler (new Vector3 (270, 0, 0)));
@@ -40,9 +40,9 @@ public class createScript : MonoBehaviour {
 	{
 		Vector3 start = objectDestination.transform.position;
 		start.y = 10;
-		Instantiate (objectSelection, start, Quaternion.Euler (new Vector3(0, 0, 0)));
-
+		GameObject a = (GameObject)Instantiate (objectSelection, start, Quaternion.Euler (new Vector3(0, 0, 0)));
+		a.GetComponent<dropScript>().spawner = objectDestination;
+		a.GetComponent<dropScript>().gv = this.gv;
 	}
-
 
 }

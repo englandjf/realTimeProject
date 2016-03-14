@@ -18,7 +18,7 @@ public class menuScript:MonoBehaviour{
 
 	public globalVars gv;
 
-	public objectBank ob;
+
 
 	void Start()
 	{
