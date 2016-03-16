@@ -15,6 +15,8 @@ public class globalVars : MonoBehaviour {
 
 	public GameObject selectedCube;
 
+	public string dropSelection;
+
 	// Use this for initialization
 	void Start () {
 		camDis = 10;
@@ -45,6 +47,11 @@ public class globalVars : MonoBehaviour {
 		}
 
 
+	}
+
+	public void setSelection(string selection)
+	{
+		dropSelection = selection;
 	}
 
 

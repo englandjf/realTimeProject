@@ -44,14 +44,14 @@ public class tileScript : MonoBehaviour {
 
 	void OnMouseOver()
 	{
-		if (gv.menuState.name =="dropMenu" || gv.menuState.name == "buildMenu") {
+		if (gv.dropSelection != null || gv.dropSelection != "") {
 			if (Input.GetMouseButtonDown (0)) {
 				//clears old
 				if (gv.selected)
 					gv.selected.GetComponent<Renderer> ().materials [0].color = Color.white;
 				gameObject.GetComponent<Renderer> ().materials [0].color = Color.red;
 				gv.selected = this.gameObject;
-				gv.cs.createObject(gv.ob.cube1,this.gameObject);
+				gv.cs.createObject(gv.ob.getSelection(gv.dropSelection),this.gameObject);
 			}
 		}
 	}

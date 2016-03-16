@@ -7,6 +7,8 @@ public class createScript : MonoBehaviour {
 	public GameObject metalTile;
 	public globalVars gv;
 
+
+
 	// Use this for initialization
 	void Start () {
 		createTiles ();
@@ -38,11 +40,19 @@ public class createScript : MonoBehaviour {
 
 	public void createObject(GameObject objectSelection,GameObject objectDestination)
 	{
-		Vector3 start = objectDestination.transform.position;
-		start.y = 10;
-		GameObject a = (GameObject)Instantiate (objectSelection, start, Quaternion.Euler (new Vector3(0, 0, 0)));
-		a.GetComponent<dropScript>().spawner = objectDestination;
-		a.GetComponent<dropScript>().gv = this.gv;
+		//for some reason this is still being called?
+		if(gv.dropSelection != null){
+			Vector3 start = objectDestination.transform.position;
+			start.y = 10;
+			try{
+				GameObject a = (GameObject)Instantiate (objectSelection, start, Quaternion.Euler (new Vector3(0, 0, 0)));
+				a.GetComponent<dropScript>().spawner = objectDestination;
+				a.GetComponent<dropScript>().gv = this.gv;
+			}
+			catch(System.Exception e){
+				Debug.Log(e);
+			}
+		}
 	}
 
 }
