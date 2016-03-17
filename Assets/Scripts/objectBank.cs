@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class objectBank : MonoBehaviour {
 	//controllable
 	public GameObject cube1;
+	public GameObject tank1;
 
 	//static
 	public GameObject dropBox;
@@ -20,6 +21,10 @@ public class objectBank : MonoBehaviour {
 			return cube1;
 		case "dropBox":
 			return dropBox;
+		case "metalBuilding":
+			return metalBuilding;
+		case "tank1":
+			return tank1;
 		}
 		return null;
 	}

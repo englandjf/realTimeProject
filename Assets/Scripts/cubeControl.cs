@@ -20,9 +20,9 @@ public class cubeControl : MonoBehaviour {
 	{
 		
 		if (Input.GetMouseButtonDown (0)) {
-			if (gv.selectedCube)
-				gv.selectedCube.GetComponent<Renderer> ().materials [0].color = Color.white;
-			gameObject.GetComponent<Renderer> ().materials [0].color = Color.red;
+			//if (gv.selectedCube)
+			//	gv.selectedCube.GetComponent<Renderer> ().materials [0].color = Color.white;
+			//gameObject.GetComponent<Renderer> ().materials [0].color = Color.red;
 			gv.selectedCube = this.gameObject;
 		}
 

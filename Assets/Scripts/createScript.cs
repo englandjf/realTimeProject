@@ -42,12 +42,31 @@ public class createScript : MonoBehaviour {
 	{
 		//for some reason this is still being called?
 		if(gv.dropSelection != null){
-			Vector3 start = objectDestination.transform.position;
-			start.y = 10;
+			//Vector3 start = objectDestination.transform.position;
+			//start.y = 10;
+
+
 			try{
-				GameObject a = (GameObject)Instantiate (objectSelection, start, Quaternion.Euler (new Vector3(0, 0, 0)));
-				a.GetComponent<dropScript>().spawner = objectDestination;
-				a.GetComponent<dropScript>().gv = this.gv;
+				gv.dropSelection = null;
+				gv.selected = null;
+				objectDestination.GetComponent<Renderer>().material.color = Color.white;
+				if(objectSelection.name.Contains("metal") && !objectDestination.name.Contains("metal"))
+					return;
+				GameObject a = (GameObject)Instantiate (objectSelection, objectDestination.transform.position, Quaternion.Euler (new Vector3(0, 0, 0)));
+				//a.GetComponent<dropScript>().spawner = objectDestination;
+				//a.GetComponent<dropScript>().gv = this.gv;
+
+				if(a.tag == "static")
+				{
+					
+				}
+				else if(a.tag == "controlled")
+				{
+					a.AddComponent<cubeControl>().nvm = a.AddComponent<NavMeshAgent>();
+					a.GetComponent<cubeControl>().gv = this.gv;
+				}
+
+					
 			}
 			catch(System.Exception e){
 				Debug.Log(e);

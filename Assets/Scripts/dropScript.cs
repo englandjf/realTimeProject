@@ -37,8 +37,10 @@ public class dropScript : MonoBehaviour {
 			yield return null;
 
 		spawner.GetComponent<Renderer>().material.color = Color.white;
-		this.gameObject.AddComponent<cubeControl>().gv = gv;
-		Destroy(this.gameObject.GetComponent<Rigidbody>());
+
+		this.gameObject.AddComponent<buildingScript>();
+		//will want to remove at some point?
+		//Destroy(this.gameObject.GetComponent<Rigidbody>());
 		gv.dropSelection = null;
 	}		
 }

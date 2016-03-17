@@ -36,15 +36,20 @@ public class tileScript : MonoBehaviour {
 	void OnMouseEnter()
 	{
 		if (gv.menuState.name == "dropMenu" || gv.menuState.name == "buildMenu") {
-			if (gv.selected != this.gameObject)
-				gameObject.GetComponent<Renderer> ().materials [0].color = Color.yellow;
+			if (gv.selected != this.gameObject && gv.dropSelection != null) {
+				if(gv.dropSelection.Contains("metal") && this.gameObject.name.Contains("metal"))
+					gameObject.GetComponent<Renderer> ().materials [0].color = Color.green;
+				else
+					gameObject.GetComponent<Renderer> ().materials [0].color = Color.yellow;
+			}
 			gv.over = this.gameObject;
 		}
 	}
 
 	void OnMouseOver()
 	{
-		if (gv.dropSelection != null || gv.dropSelection != "") {
+		
+		if (gv.dropSelection != null) {
 			if (Input.GetMouseButtonDown (0)) {
 				//clears old
 				if (gv.selected)
@@ -54,6 +59,7 @@ public class tileScript : MonoBehaviour {
 				gv.cs.createObject(gv.ob.getSelection(gv.dropSelection),this.gameObject);
 			}
 		}
+
 	}
 
 	void OnMouseExit()
