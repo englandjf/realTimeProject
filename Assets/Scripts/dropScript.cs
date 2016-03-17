@@ -5,11 +5,13 @@ public class dropScript : MonoBehaviour {
 
 	public GameObject spawner;
 	public globalVars gv;
-	public ParticleSystem ps;
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(groundCheck());
+		if(this.gameObject.tag == "controlled")
+			StartCoroutine(groundCheck());
+		else if(this.gameObject.tag == "static")
+			StartCoroutine(groundCheckStatic());
 	}
 	
 	// Update is called once per frame
@@ -19,15 +21,24 @@ public class dropScript : MonoBehaviour {
 
 	IEnumerator groundCheck()
 	{
-		while(this.gameObject.transform.position.y >= 1)
+		while(this.gameObject.transform.position.y >= .5f)
 			yield return null;
 		//particle or explosion
-		ps.Play();
 		spawner.GetComponent<Renderer>().material.color = Color.white;
 		this.gameObject.AddComponent<cubeControl>().gv = gv;
 		this.gameObject.AddComponent<NavMeshAgent>();
 		Destroy(this.gameObject.GetComponent<Rigidbody>());
 		gv.dropSelection = null;
 	}
-		
+
+	IEnumerator groundCheckStatic()
+	{
+		while(this.gameObject.transform.position.y >= .5f)
+			yield return null;
+
+		spawner.GetComponent<Renderer>().material.color = Color.white;
+		this.gameObject.AddComponent<cubeControl>().gv = gv;
+		Destroy(this.gameObject.GetComponent<Rigidbody>());
+		gv.dropSelection = null;
+	}		
 }

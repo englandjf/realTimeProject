@@ -8,6 +8,7 @@ public class objectBank : MonoBehaviour {
 
 	//static
 	public GameObject dropBox;
+	public GameObject metalBuilding;
 
 
 	public GameObject getSelection(string selection)
