@@ -10,6 +10,7 @@ public class objectBank : MonoBehaviour {
 	//static
 	public GameObject dropBox;
 	public GameObject metalBuilding;
+	public GameObject powerBuilding;
 
 
 	public GameObject getSelection(string selection)
@@ -25,6 +26,8 @@ public class objectBank : MonoBehaviour {
 			return metalBuilding;
 		case "tank1":
 			return tank1;
+		case "powerBuilding":
+			return powerBuilding;
 		}
 		return null;
 	}

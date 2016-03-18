@@ -8,6 +8,7 @@ public class tileScript : MonoBehaviour {
 	public globalVars gv;
 
 
+
 	// Use this for initialization
 	/*
 	void Start () {
@@ -38,9 +39,11 @@ public class tileScript : MonoBehaviour {
 		if (gv.menuState.name == "dropMenu" || gv.menuState.name == "buildMenu") {
 			if (gv.selected != this.gameObject && gv.dropSelection != null) {
 				if(gv.dropSelection.Contains("metal") && this.gameObject.name.Contains("metal"))
-					gameObject.GetComponent<Renderer> ().materials [0].color = Color.green;
+					gameObject.GetComponent<Renderer> ().materials[0].color = Color.green;
+				else if(gv.dropSelection.Contains("power") && this.gameObject.name.Contains("power"))
+					gameObject.GetComponent<Renderer> ().materials[0].color = Color.green;
 				else
-					gameObject.GetComponent<Renderer> ().materials [0].color = Color.yellow;
+					gameObject.GetComponent<Renderer> ().materials[0].color  = Color.yellow;
 			}
 			gv.over = this.gameObject;
 		}
@@ -53,8 +56,8 @@ public class tileScript : MonoBehaviour {
 			if (Input.GetMouseButtonDown (0)) {
 				//clears old
 				if (gv.selected)
-					gv.selected.GetComponent<Renderer> ().materials [0].color = Color.white;
-				gameObject.GetComponent<Renderer> ().materials [0].color = Color.red;
+					gv.selected.GetComponent<Renderer> ().materials[0].color = Color.white;
+				gameObject.GetComponent<Renderer> ().materials[0].color  = Color.red;
 				gv.selected = this.gameObject;
 				gv.cs.createObject(gv.ob.getSelection(gv.dropSelection),this.gameObject);
 			}
@@ -66,7 +69,7 @@ public class tileScript : MonoBehaviour {
 	{
 		if (gv.menuState.name == "dropMenu" || gv.menuState.name == "buildMenu") {
 			if (gv.selected != this.gameObject)
-				gameObject.GetComponent<Renderer> ().materials [0].color = Color.white;
+				gameObject.GetComponent<Renderer> ().materials[0].color  = Color.white;
 			gv.over = null;
 		}
 	}

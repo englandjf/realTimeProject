@@ -5,6 +5,7 @@ public class createScript : MonoBehaviour {
 
 	public GameObject tile;
 	public GameObject metalTile;
+	public GameObject powerTile;
 	public globalVars gv;
 
 
@@ -27,10 +28,18 @@ public class createScript : MonoBehaviour {
 				if (aRand == 0) {
 					GameObject a = (GameObject)Instantiate (metalTile, new Vector3 (x, 0, z), Quaternion.Euler (new Vector3 (270, 0, 0)));
 					a.GetComponent<tileScript> ().gv = this.gv;
+					//a.GetComponent<tileScript> ().baseIndex = 0;
+					a.GetComponent<Renderer> ().materials [0].color = Color.white;
+				}
+				else if (aRand == 1) {
+					GameObject a = (GameObject)Instantiate (powerTile, new Vector3 (x, 0, z), Quaternion.Euler (new Vector3 (270, 0, 0)));
+					a.GetComponent<tileScript> ().gv = this.gv;
+					//a.GetComponent<tileScript> ().baseIndex = 0;
 					a.GetComponent<Renderer> ().materials [0].color = Color.white;
 				} else {
 					GameObject a = (GameObject)Instantiate (tile, new Vector3 (x, 0, z), Quaternion.Euler (new Vector3 (270, 0, 0)));
 					a.GetComponent<tileScript> ().gv = this.gv;
+					//a.GetComponent<tileScript> ().baseIndex = 0;
 					a.GetComponent<Renderer> ().materials [0].color = Color.white;
 				}
 			}
@@ -50,11 +59,26 @@ public class createScript : MonoBehaviour {
 				gv.dropSelection = null;
 				gv.selected = null;
 				objectDestination.GetComponent<Renderer>().material.color = Color.white;
-				if(objectSelection.name.Contains("metal") && !objectDestination.name.Contains("metal"))
-					return;
+				if(objectSelection.name.Contains("metal")){
+					if(!objectDestination.name.Contains("metal"))
+						return;
+				}
+				else if(objectSelection.name.Contains("power")){
+					if(!objectDestination.name.Contains("power"))
+						return;
+				}
 				GameObject a = (GameObject)Instantiate (objectSelection, objectDestination.transform.position, Quaternion.Euler (new Vector3(0, 0, 0)));
 				//a.GetComponent<dropScript>().spawner = objectDestination;
 				//a.GetComponent<dropScript>().gv = this.gv;
+
+				if(a.name.Contains("metal"))
+				{
+					gv.metalList.Add(a);
+				}
+				else if(a.name.Contains("power"))
+				{
+					gv.powerList.Add(a);
+				}
 
 				if(a.tag == "static")
 				{
