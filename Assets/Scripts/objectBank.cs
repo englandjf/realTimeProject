@@ -15,7 +15,7 @@ public class objectBank : MonoBehaviour {
 
 	public GameObject getSelection(string selection)
 	{
-		Debug.Log("callede");
+		Debug.Log(selection);
 		switch(selection)
 		{
 		case "cube1":
@@ -28,7 +28,10 @@ public class objectBank : MonoBehaviour {
 			return tank1;
 		case "powerBuilding":
 			return powerBuilding;
+		//default:
+		
 		}
+		Debug.Log("ERRR");
 		return null;
 	}
 }

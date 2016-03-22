@@ -50,7 +50,7 @@ public class createScript : MonoBehaviour {
 	public void createObject(GameObject objectSelection,GameObject objectDestination)
 	{
 		//for some reason this is still being called?
-		if(gv.dropSelection != null){
+		if(gv.dropSelection != null && priceCheck(objectSelection.name)){
 			//Vector3 start = objectDestination.transform.position;
 			//start.y = 10;
 
@@ -82,7 +82,7 @@ public class createScript : MonoBehaviour {
 
 				if(a.tag == "static")
 				{
-					
+					a.GetComponent<buildingScript>().gv = this.gv;
 				}
 				else if(a.tag == "controlled")
 				{
@@ -97,5 +97,30 @@ public class createScript : MonoBehaviour {
 			}
 		}
 	}
+
+
+	bool priceCheck(string name)
+	{
+		Debug.Log(name);
+		if(name.Contains("Building")){
+			priceList temp =  (priceList)gv.buildingInfo[name];
+			if(gv.metalAmt - temp.metalAmt < 0)
+				return false;
+			if(gv.powerAmt - temp.powerAmt < 0)
+				return false;
+			return true;
+		}
+		else
+		{
+			priceList temp =  (priceList)gv.dropInfo[name];
+			if(gv.metalAmt - temp.metalAmt < 0)
+				return false;
+			if(gv.powerAmt - temp.powerAmt < 0)
+				return false;
+			return true;
+		}
+	
+	}
+
 
 }

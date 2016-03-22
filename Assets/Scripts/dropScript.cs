@@ -12,6 +12,8 @@ public class dropScript : MonoBehaviour {
 			StartCoroutine(groundCheck());
 		else if(this.gameObject.tag == "static")
 			StartCoroutine(groundCheckStatic());
+
+		//subtract costs
 	}
 	
 	// Update is called once per frame

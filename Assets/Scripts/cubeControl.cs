@@ -9,6 +9,10 @@ public class cubeControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		nvm = GetComponent<NavMeshAgent>();
+		Debug.Log(this.gameObject.name.Remove(7));
+		priceList temp = (priceList) gv.dropInfo[this.gameObject.name.Remove(this.gameObject.name.Length-7)];
+		gv.metalAmt -= temp.metalAmt;
+		gv.powerAmt -= temp.powerAmt;
 	}
 	
 	// Update is called once per frame

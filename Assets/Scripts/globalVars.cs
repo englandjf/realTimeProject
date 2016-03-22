@@ -21,14 +21,19 @@ public class globalVars : MonoBehaviour {
 	//To avoid having to update every single one, just do it all at once
 	public List<GameObject> powerList;
 	public List<GameObject> metalList;
-	public int powerAmt = 0;
-	public int metalAmt = 0;
+	public float powerAmt;
+	public float metalAmt;
 
 	// Use this for initialization
 	void Start () {
 		camDis = 10;
+		powerAmt = 200;
+		metalAmt = 100;
 		powerList = new List<GameObject> ();
 		metalList = new List<GameObject> ();
+
+		setupBuildings();
+		setupDrops();
 	}
 	
 	// Update is called once per frame
@@ -71,8 +76,25 @@ public class globalVars : MonoBehaviour {
 
 	void calculateResources()
 	{
-		powerAmt += powerList.Count;
-		metalAmt += metalList.Count;
+		powerAmt += powerList.Count/500.0f;
+		metalAmt += metalList.Count/500.0f;
+	}
+
+	//NAMES MUST BE EXACTLY THE SAME AS PREFAB NAMES
+	public Hashtable dropInfo;
+	public Hashtable buildingInfo;
+	void setupDrops()
+	{
+		dropInfo = new Hashtable();
+		dropInfo.Add("cube1",new priceList(50,50));
+		dropInfo.Add("tank1",new priceList(100,50));
+	}
+
+	void setupBuildings()
+	{
+		buildingInfo = new Hashtable();
+		buildingInfo.Add("metalBuilding",new priceList(50,100));
+		buildingInfo.Add("powerBuilding",new priceList(100,50));
 	}
 
 

@@ -52,7 +52,7 @@ public class tileScript : MonoBehaviour {
 	void OnMouseOver()
 	{
 		
-		if (gv.dropSelection != null) {
+		if (gv.dropSelection != null && gv.dropSelection != "") {
 			if (Input.GetMouseButtonDown (0)) {
 				//clears old
 				if (gv.selected)
